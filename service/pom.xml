@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>slite-sample-core-parent</artifactId>
+        <groupId>com.alipay.demo</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.alipay.demo</groupId>
+    <artifactId>slite-sample-core-service</artifactId>
+
+    <dependencies>
+        <!-- depends on facade's interfaces -->
+        <dependency>
+            <groupId>com.alipay.demo</groupId>
+            <artifactId>slite-sample-core-facade</artifactId>
+        </dependency>
+
+        <!-- so that we can use sofa:binding.tr-->
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>slite-starter-rpc</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- build a uber jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.3.1.RELEASE</version>
+                <configuration>
+                    <mainClass>com.alipay.demo.RpcServer</mainClass>
+                    <outputDirectory>../target</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
